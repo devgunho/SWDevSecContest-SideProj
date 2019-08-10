@@ -1,0 +1,13 @@
+/Hello/*.iml
+/Hello/.gradle
+/Hello/local.properties
+/Hello/.idea/caches
+/Hello/.idea/libraries
+/Hello/.idea/modules.xml
+/Hello/.idea/workspace.xml
+/Hello/.idea/navEditor.xml
+/Hello/.idea/assetWizardSettings.xml
+/Hello.DS_Store
+/Hello/build
+/Hello/captures
+/Hello.externalNativeBuild
