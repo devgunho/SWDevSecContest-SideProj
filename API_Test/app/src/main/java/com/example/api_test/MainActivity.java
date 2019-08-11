@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         String line="";
         try {
             while ((line = reader.readLine()) != null) {
-                //Log.d("MyActivity","Line : "+line);
+                Log.d("MyActivity","Line : "+line);
                 // Split
                 String[] tokens = line.split("\",\"");
 
