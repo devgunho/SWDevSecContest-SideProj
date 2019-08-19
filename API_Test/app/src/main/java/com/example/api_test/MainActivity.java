@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 sample.setOpTime(tokens[5]);
                 sample.setClosedDay(tokens[6]);
                 sample.setBasicInfo(tokens[7]);
+                sample.setCategory(tokens[26]);
                 sample.setLatitude(tokens[28]);
                 sample.setLongitude(tokens[27]);
                 bfSamples.add(sample);
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         } catch (IOException e) {
-            Log.wtf("MyActivity","Error Reading Data File on Line"+line,e);
+            //Log.wtf("MyActivity","Error Reading Data File on Line"+line,e);
             e.printStackTrace();
         }
     }

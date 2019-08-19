@@ -45,6 +45,7 @@ class BFDataSample {
     private String opTime;
     private String closedDay;
     private String basicInfo;
+    private String category;
     private String latitude;
     private String longitude;
 
@@ -110,13 +111,15 @@ class BFDataSample {
         return basicInfo;
     }
 
-    public void setBasicInfo(String basicInfo) {
-        this.basicInfo = basicInfo;
+    public void setBasicInfo(String basicInfo) { this.basicInfo = basicInfo; }
+
+    public String getCategory() {return category; }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public String getLatitude() {
-        return latitude;
-    }
+    public String getLatitude() {return latitude; }
 
     public void setLatitude(String latitude) {
         this.latitude = latitude;
@@ -141,6 +144,7 @@ class BFDataSample {
                 ", opTime='" + opTime + '\'' +
                 ", closedDay='" + closedDay + '\'' +
                 ", basicInfo='" + basicInfo + '\'' +
+                ", category='" + category + '\'' +
                 ", latitude='" + latitude + '\'' +
                 ", longitude='" + longitude + '\'' +
                 '}';
