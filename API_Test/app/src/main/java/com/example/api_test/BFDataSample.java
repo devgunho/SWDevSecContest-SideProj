@@ -137,16 +137,16 @@ class BFDataSample {
     public String toString() {
         return "BFDataSample{" +
                 //"num='" + num + '\'' +
-                "businessName='" + businessName + '\'' +
-                ", tel='" + tel + '\'' +
-                ", fax='" + fax + '\'' +
-                ", address='" + address + '\'' +
-                ", opTime='" + opTime + '\'' +
-                ", closedDay='" + closedDay + '\'' +
-                ", basicInfo='" + basicInfo + '\'' +
-                ", category='" + category + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
+                "\"businessName\" : \"" + businessName + '\"' +
+                ", \"tel\" : \"" + tel + '\"' +
+                ", \"fax\" : \"" + fax + '\"' +
+                ", \"address\" : \"" + address + '\"' +
+                ", \"opTime\" : \"" + opTime + '\"' +
+                ", \"closedDay\" : \"" + closedDay + '\"' +
+                ", \"basicInfo\" : \"" + basicInfo + '\"' +
+                ", \"category\" : \"" + category + '\"' +
+                ", \"latitude\" : \"" + latitude + '\"' +
+                ", \"longitude\" : \"" + longitude + '\"' +
                 '}';
     }
 }
