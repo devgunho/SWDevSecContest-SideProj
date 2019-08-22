@@ -91,12 +91,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         btnLink = (Button) findViewById(R.id.btnLink);
+        /*
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //"https://onedrive.live.com/?id=597030471D14971B%219496&cid=597030471D14971B"
             }
         });
+        */
 
         readBarrierFreeData();
     }

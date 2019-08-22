@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-        android:text="Hash Check" />
+        android:text="MAC Hash Check" />
 
     <EditText
         android:id="@+id/txtDesignation"
