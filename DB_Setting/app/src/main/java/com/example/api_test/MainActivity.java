@@ -2,6 +2,7 @@ package com.example.api_test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,20 +22,21 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     EditText name, loc, desig;
-    Button saveBtn;
+    Button saveBtn, btnLink;
     Intent intent;
 
-    private List<BFDataSample> bfSamples= new ArrayList<>();
+    private List<BFDataSample> bfSamples = new ArrayList<>();
+
     private void readBarrierFreeData() {
         InputStream is = getResources().openRawResource(R.raw.seoul_barrier_free);
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, Charset.forName("UTF-8"))
         );
 
-        String line="";
+        String line = "";
         try {
             while ((line = reader.readLine()) != null) {
-                Log.d("MyActivity","Line : "+line);
+                Log.d("MyActivity", "Line : " + line);
                 // Split
                 String[] tokens = line.split(",");
 
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 sample.setLongitude(tokens[27]);
                 bfSamples.add(sample);
 
-                Log.d("MyActivity","Just Created : "+sample);
+                Log.d("MyActivity", "Just Created : " + sample);
 
             }
         } catch (IOException e) {
@@ -68,10 +70,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        name = (EditText)findViewById(R.id.txtName);
-        loc = (EditText)findViewById(R.id.txtLocation);
-        desig = (EditText)findViewById(R.id.txtDesignation);
-        saveBtn = (Button)findViewById(R.id.btnSave);
+        name = (EditText) findViewById(R.id.txtName);
+        loc = (EditText) findViewById(R.id.txtLocation);
+        desig = (EditText) findViewById(R.id.txtDesignation);
+        saveBtn = (Button) findViewById(R.id.btnSave);
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,15 +81,22 @@ public class MainActivity extends AppCompatActivity {
                 String password = loc.getText().toString();
                 String hashval = desig.getText().toString();
                 DBHandler dbHandler = new DBHandler(MainActivity.this);
-                for(int i=0; i<bfSamples.size(); i++) {
+                for (int i = 0; i < bfSamples.size(); i++) {
                     dbHandler.insertUserDetails(bfSamples.get(i).getNum(), bfSamples.get(i).getBusinessName(), bfSamples.get(i).getBasicInfo());
                 }
 
                 intent = new Intent(MainActivity.this, DetailsActivity.class);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Success!",Toast.LENGTH_SHORT).show();
-    }
-});
+                Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnLink = (Button) findViewById(R.id.btnLink);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //"https://onedrive.live.com/?id=597030471D14971B%219496&cid=597030471D14971B"
+            }
+        });
 
         readBarrierFreeData();
     }

@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
                     // writing data to file
                     output.write(data, 0, count);
+                    Log.d(TAG, "Data: " + input.read(data));
                 }
 
                 // flushing output
