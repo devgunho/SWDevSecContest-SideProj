@@ -12,7 +12,7 @@ git : https://github.com/alfodmlzhsks/Software_DevSec_Contest
 
 
 
-**Json 형식으로 데이터 전처리**
+### Json 형식으로 데이터 전처리
 
 ```json
 BFDataSample{
@@ -31,7 +31,7 @@ BFDataSample{
 
 
 
-**Using PreparedStatement not Statemet**
+### Using PreparedStatement (not Statemet)
 
 Statemet 취약점을 가지고 있기 때문에 사용하지 않는다.
 

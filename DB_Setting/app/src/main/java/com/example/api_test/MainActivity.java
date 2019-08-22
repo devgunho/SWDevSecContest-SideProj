@@ -79,12 +79,16 @@ public class MainActivity extends AppCompatActivity {
                 String location = loc.getText().toString();
                 String designation = desig.getText().toString();
                 DBHandler dbHandler = new DBHandler(MainActivity.this);
-                dbHandler.insertUserDetails(username,location,designation);
+                //dbHandler.insertUserDetails(username,location,designation);
+                for(int i=0; i<bfSamples.size(); i++) {
+                    dbHandler.insertUserDetails(bfSamples.get(i).getBusinessName(), bfSamples.get(i).getBusinessName(), bfSamples.get(i).getBusinessName());
+                }
+
                 intent = new Intent(MainActivity.this, DetailsActivity.class);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Details Inserted Successfully",Toast.LENGTH_SHORT).show();
-            }
-        });
+                Toast.makeText(getApplicationContext(), "Success!",Toast.LENGTH_SHORT).show();
+    }
+});
 
         readBarrierFreeData();
     }
