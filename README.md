@@ -33,4 +33,6 @@ BFDataSample{
 
 **Using PreparedStatement not Statemet**
 
-Statemet 취약점을 가지고 있기 때문에 사용하지 않는다. 대신 객체를 객체를 캐시에 담아 재사용하는 PreparedStatement를 사용한다.
+Statemet 취약점을 가지고 있기 때문에 사용하지 않는다.
+
+대신 객체를 객체를 캐시에 담아 재사용하는 PreparedStatement를 사용한다.
