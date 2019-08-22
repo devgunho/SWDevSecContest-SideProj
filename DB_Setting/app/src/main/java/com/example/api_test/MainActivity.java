@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
             while ((line = reader.readLine()) != null) {
                 Log.d("MyActivity","Line : "+line);
                 // Split
-                String[] tokens = line.split("\",\"");
+                String[] tokens = line.split(",");
 
                 // Read Data
                 BFDataSample sample = new BFDataSample();
-                //sample.setNum(tokens[0]);
+                sample.setNum(tokens[0]);
                 sample.setBusinessName(tokens[1]);
 
                 sample.setTel(tokens[2]);
@@ -75,13 +75,12 @@ public class MainActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = name.getText().toString()+"\n";
-                String location = loc.getText().toString();
-                String designation = desig.getText().toString();
+                String adminid = name.getText().toString();
+                String password = loc.getText().toString();
+                String hashval = desig.getText().toString();
                 DBHandler dbHandler = new DBHandler(MainActivity.this);
-                //dbHandler.insertUserDetails(username,location,designation);
                 for(int i=0; i<bfSamples.size(); i++) {
-                    dbHandler.insertUserDetails(bfSamples.get(i).getBusinessName(), bfSamples.get(i).getBusinessName(), bfSamples.get(i).getBusinessName());
+                    dbHandler.insertUserDetails(bfSamples.get(i).getNum(), bfSamples.get(i).getBusinessName(), bfSamples.get(i).getBasicInfo());
                 }
 
                 intent = new Intent(MainActivity.this, DetailsActivity.class);

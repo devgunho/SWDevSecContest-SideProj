@@ -37,7 +37,7 @@
 package com.example.api_test;
 
 class BFDataSample {
-    // private String num;
+    private String num;
     private String businessName;
     private String tel;
     private String fax;
@@ -49,11 +49,13 @@ class BFDataSample {
     private String latitude;
     private String longitude;
 
-    /*
-     * public String getNum() { return num; }
-     * 
-     * public void setNum(String num) { this.num = num; }
-     */
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
 
     public String getBusinessName() {
         return businessName;
@@ -138,7 +140,7 @@ class BFDataSample {
     @Override
     public String toString() {
         return "BFDataSample{" +
-        // "num='" + num + '\'' +
+                // "num='" + num + '\'' +
                 "\"businessName\" : \"" + businessName + '\"' + ", \"tel\" : \"" + tel + '\"' + ", \"fax\" : \"" + fax
                 + '\"' + ", \"address\" : \"" + address + '\"' + ", \"opTime\" : \"" + opTime + '\"'
                 + ", \"closedDay\" : \"" + closedDay + '\"' + ", \"basicInfo\" : \"" + basicInfo + '\"'
