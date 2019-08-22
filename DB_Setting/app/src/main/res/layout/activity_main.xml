@@ -60,4 +60,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:text="DB Manage Link" />
+    <Button
+        android:id="@+id/getMAC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:text="get MAC" />
 </LinearLayout>

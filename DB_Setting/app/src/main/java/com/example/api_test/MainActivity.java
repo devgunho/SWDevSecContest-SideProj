@@ -3,6 +3,7 @@ package com.example.api_test;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,14 +16,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.NetworkInterface;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText name, loc, desig;
-    Button saveBtn, btnLink;
+    Button saveBtn, btnLink, getMAC;
     Intent intent;
 
     private List<BFDataSample> bfSamples = new ArrayList<>();
@@ -90,15 +93,43 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Success!", Toast.LENGTH_SHORT).show();
             }
         });
+
         btnLink = (Button) findViewById(R.id.btnLink);
-        /*
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+
+        btnLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //"https://onedrive.live.com/?id=597030471D14971B%219496&cid=597030471D14971B"
+                Intent linkIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://onedrive.live.com/?id=597030471D14971B%219496&cid=597030471D14971B"));
+                startActivity(linkIntent);
             }
         });
-        */
+
+        getMAC = (Button) findViewById(R.id.getMAC);
+
+        getMAC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String interfaceName = "wlan0";
+                try {
+                    List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+                    for (NetworkInterface intf : interfaces) {
+                        if (interfaceName != null) {
+                            if (!intf.getName().equalsIgnoreCase(interfaceName)) continue;
+                        }
+                        byte[] mac = intf.getHardwareAddress();
+                        if (mac==null)
+                            Log.d("mac == null", "fail!");
+                        StringBuilder buf = new StringBuilder();
+                        for (int idx=0; idx<mac.length; idx++)
+                            buf.append(String.format("%02X:", mac[idx]));
+                        if (buf.length()>0) buf.deleteCharAt(buf.length()-1);
+                        Toast.makeText(getApplicationContext(), buf.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception ex) {
+                    Log.d("fail", "fail!");
+                } // for now eat exceptions
+            }
+        });
 
         readBarrierFreeData();
     }
