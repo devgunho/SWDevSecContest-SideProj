@@ -25,10 +25,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     EditText name, loc, desig;
-    Button saveBtn, btnLink, getMAC;
+    Button saveBtn, btnLink, getMAC, regMAC;
     Intent intent;
 
     private List<BFDataSample> bfSamples = new ArrayList<>();
+    private String HashMac="";
 
     private void readBarrierFreeData() {
         InputStream is = getResources().openRawResource(R.raw.seoul_barrier_free);
@@ -128,6 +129,40 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception ex) {
                     Log.d("fail", "fail!");
                 } // for now eat exceptions
+            }
+        });
+
+        regMAC = (Button) findViewById(R.id.regMAC);
+
+        regMAC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String interfaceName = "wlan0";
+                if(HashMac=="") {
+                    try {
+                        List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+                        for (NetworkInterface intf : interfaces) {
+                            if (interfaceName != null) {
+                                if (!intf.getName().equalsIgnoreCase(interfaceName)) continue;
+                            }
+                            byte[] mac = intf.getHardwareAddress();
+                            if (mac == null)
+                                Log.d("mac == null", "fail!");
+                            StringBuilder buf = new StringBuilder();
+                            for (int idx = 0; idx < mac.length; idx++)
+                                buf.append(String.format("%02X:", mac[idx]));
+                            if (buf.length() > 0) buf.deleteCharAt(buf.length() - 1);
+                            Toast.makeText(getApplicationContext(), buf.toString(), Toast.LENGTH_SHORT).show();
+                            HashMac = buf.toString();
+                        }
+                    } catch (Exception ex) {
+                        Log.d("fail", "fail!");
+                    } // for now eat exceptions
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "The administrator is already registered! : " + HashMac, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
