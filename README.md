@@ -1,8 +1,8 @@
-# SW Secure Coding
+# 2019 소프트웨어 개발보안 경진대회 준비 (Testbed)
 
-git : https://github.com/alfodmlzhsks/Software_DevSec_Contest
+대회 : https://github.com/gunh0/sw-secure-coding-contest
 
----
+<br/>
 
 ### API_Test
 
@@ -10,7 +10,7 @@ git : https://github.com/alfodmlzhsks/Software_DevSec_Contest
 
 ![image](https://user-images.githubusercontent.com/41619898/62830754-cfb92880-bc4e-11e9-8f42-a848643b8eb3.png)
 
-
+<br/>
 
 ### Json 형식으로 데이터 전처리
 
@@ -29,10 +29,12 @@ BFDataSample{
 }
 ```
 
+<br/>
 
+### Note
 
-### Using PreparedStatement (not Statemet)
+**Using PreparedStatement (not Statemet)**
 
-Statemet 취약점을 가지고 있기 때문에 사용하지 않는다.
+- Statemet 취약점을 가지고 있기 때문에 사용하지 않는다.
 
-대신 객체를 객체를 캐시에 담아 재사용하는 PreparedStatement를 사용한다.
+- 대신 객체를 객체를 캐시에 담아 재사용하는 PreparedStatement를 사용한다.
